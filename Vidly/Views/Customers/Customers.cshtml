@@ -1,0 +1,42 @@
+﻿@model Vidly.ViewModels.CustomersViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Customers</title>
+</head>
+<body>
+    <div>
+
+
+
+        @if (!Model.Customers.Any())
+        {
+            <p>No Customers Yet</p>
+        }
+        else
+        {
+
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model.Customers)
+                    {
+                        <tr>
+                            <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+    </div>
+</body>
+</html>
