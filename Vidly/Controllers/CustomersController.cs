@@ -34,6 +34,13 @@ namespace Vidly.Controllers
             return View(model);
         }
 
+        public ActionResult New()
+        {
+
+     
+            return View();
+        }
+
         [Route("Customers/Details/{id:regex(\\d{1}):range(1,12)}")]
         public ActionResult Details(int id)
         {
