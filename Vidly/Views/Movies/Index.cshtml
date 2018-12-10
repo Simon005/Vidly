@@ -1,0 +1,27 @@
+﻿@model Vidly.ViewModels.MoviesViewModel
+
+
+@if (Model.Movies.Any())
+{
+<table  class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Genre</td>
+        </tr>
+    </thead>
+    @foreach (var movie in Model.Movies)
+    {
+        <tbody>
+            <tr>
+                <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null )</td>
+                <td>@movie.Genre.Name</td>
+            </tr>
+        </tbody>
+    }
+</table>
+}
+else
+{
+<text>No Movies</text>
+}

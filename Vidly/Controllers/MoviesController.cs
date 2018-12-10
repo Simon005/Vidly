@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using Vidly.Entity;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -10,6 +12,13 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        public MyDbContext myDbContext;
+
+        public MoviesController()
+        {
+            myDbContext = new MyDbContext();
+        }
+
         // GET: Movies/random
         public ActionResult Random()
         {
@@ -43,9 +52,32 @@ namespace Vidly.Controllers
             if (String.IsNullOrWhiteSpace(sortBy))
                 sortBy = "Name";
 
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+            var movies = myDbContext.Movies.Include(m => m.Genre).ToList();
+            var model = new MoviesViewModel
+            {
+                 Movies = movies
+            };
+
+            return View(model);
         }
 
+        [Route("Movies/Details/{id:regex(\\d{1}):range(1,12)}")]
+        public ActionResult Details(int id)
+        {
+
+            var movie = myDbContext.Movies.Include(m => m.Genre).FirstOrDefault(m => m.Id == id);
+
+            var model = new MovieDetailsViewModel
+            {
+                Name = movie.Name,
+                 DateAdded = movie.DateAdded,
+                  GenreName = movie.Genre.Name,
+                   ReleaseDate = movie.ReleaseDate,
+                    InStock = movie.NumberInStock
+            };
+
+            return View(model);
+        }
 
         [Route("movies/released/{year}/{month:regex(\\d{4}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)

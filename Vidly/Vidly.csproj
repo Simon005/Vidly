@@ -161,6 +161,51 @@
     <Compile Include="Migrations\201812071553401_ApplyAnnotationsToCustomerName1.Designer.cs">
       <DependentUpon>201812071553401_ApplyAnnotationsToCustomerName1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812100928080_UpdatedMemberstypeName.cs" />
+    <Compile Include="Migrations\201812100928080_UpdatedMemberstypeName.Designer.cs">
+      <DependentUpon>201812100928080_UpdatedMemberstypeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812100958426_UpdatedMembershiptypeName.cs" />
+    <Compile Include="Migrations\201812100958426_UpdatedMembershiptypeName.Designer.cs">
+      <DependentUpon>201812100958426_UpdatedMembershiptypeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101000221_PopulateMembershiptypeName.cs" />
+    <Compile Include="Migrations\201812101000221_PopulateMembershiptypeName.Designer.cs">
+      <DependentUpon>201812101000221_PopulateMembershiptypeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101026286_AddCustomerBirthdate.cs" />
+    <Compile Include="Migrations\201812101026286_AddCustomerBirthdate.Designer.cs">
+      <DependentUpon>201812101026286_AddCustomerBirthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101038028_AddMovieDbSet.cs" />
+    <Compile Include="Migrations\201812101038028_AddMovieDbSet.Designer.cs">
+      <DependentUpon>201812101038028_AddMovieDbSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101041172_AddMovieDbSet1.cs" />
+    <Compile Include="Migrations\201812101041172_AddMovieDbSet1.Designer.cs">
+      <DependentUpon>201812101041172_AddMovieDbSet1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101045551_AddMovieDbSet2.cs" />
+    <Compile Include="Migrations\201812101045551_AddMovieDbSet2.Designer.cs">
+      <DependentUpon>201812101045551_AddMovieDbSet2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101049538_PopulateMovie.cs" />
+    <Compile Include="Migrations\201812101049538_PopulateMovie.Designer.cs">
+      <DependentUpon>201812101049538_PopulateMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101150138_AddGenre.cs" />
+    <Compile Include="Migrations\201812101150138_AddGenre.Designer.cs">
+      <DependentUpon>201812101150138_AddGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101234122_AddGenre1.cs" />
+    <Compile Include="Migrations\201812101234122_AddGenre1.Designer.cs">
+      <DependentUpon>201812101234122_AddGenre1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812101245325_PopulateGenres.cs" />
+    <Compile Include="Migrations\201812101245325_PopulateGenres.Designer.cs">
+      <DependentUpon>201812101245325_PopulateGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\MyDbContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,6 +217,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CustomerDetailsViewModel.cs" />
     <Compile Include="ViewModels\CustomersViewModel.cs" />
+    <Compile Include="ViewModels\MovieDetailsViewModel.cs" />
+    <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +298,8 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Customers\Customers.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -284,6 +333,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812071553401_ApplyAnnotationsToCustomerName1.resx">
       <DependentUpon>201812071553401_ApplyAnnotationsToCustomerName1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812100928080_UpdatedMemberstypeName.resx">
+      <DependentUpon>201812100928080_UpdatedMemberstypeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812100958426_UpdatedMembershiptypeName.resx">
+      <DependentUpon>201812100958426_UpdatedMembershiptypeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101000221_PopulateMembershiptypeName.resx">
+      <DependentUpon>201812101000221_PopulateMembershiptypeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101026286_AddCustomerBirthdate.resx">
+      <DependentUpon>201812101026286_AddCustomerBirthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101038028_AddMovieDbSet.resx">
+      <DependentUpon>201812101038028_AddMovieDbSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101041172_AddMovieDbSet1.resx">
+      <DependentUpon>201812101041172_AddMovieDbSet1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101045551_AddMovieDbSet2.resx">
+      <DependentUpon>201812101045551_AddMovieDbSet2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101049538_PopulateMovie.resx">
+      <DependentUpon>201812101049538_PopulateMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101150138_AddGenre.resx">
+      <DependentUpon>201812101150138_AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101234122_AddGenre1.resx">
+      <DependentUpon>201812101234122_AddGenre1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812101245325_PopulateGenres.resx">
+      <DependentUpon>201812101245325_PopulateGenres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
