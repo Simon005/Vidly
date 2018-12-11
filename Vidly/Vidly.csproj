@@ -193,17 +193,21 @@
     <Compile Include="Migrations\201812101049538_PopulateMovie.Designer.cs">
       <DependentUpon>201812101049538_PopulateMovie.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812101150138_AddGenre.cs" />
-    <Compile Include="Migrations\201812101150138_AddGenre.Designer.cs">
-      <DependentUpon>201812101150138_AddGenre.cs</DependentUpon>
+    <Compile Include="Migrations\201812111429443_RemoveGenre.cs" />
+    <Compile Include="Migrations\201812111429443_RemoveGenre.Designer.cs">
+      <DependentUpon>201812111429443_RemoveGenre.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812101234122_AddGenre1.cs" />
-    <Compile Include="Migrations\201812101234122_AddGenre1.Designer.cs">
-      <DependentUpon>201812101234122_AddGenre1.cs</DependentUpon>
+    <Compile Include="Migrations\201812111439271_RemoveGenre1.cs" />
+    <Compile Include="Migrations\201812111439271_RemoveGenre1.Designer.cs">
+      <DependentUpon>201812111439271_RemoveGenre1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812101245325_PopulateGenres.cs" />
-    <Compile Include="Migrations\201812101245325_PopulateGenres.Designer.cs">
-      <DependentUpon>201812101245325_PopulateGenres.cs</DependentUpon>
+    <Compile Include="Migrations\201812111441189_AddGenre.cs" />
+    <Compile Include="Migrations\201812111441189_AddGenre.Designer.cs">
+      <DependentUpon>201812111441189_AddGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812111453425_PopulateGenre.cs" />
+    <Compile Include="Migrations\201812111453425_PopulateGenre.Designer.cs">
+      <DependentUpon>201812111453425_PopulateGenre.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -218,6 +222,7 @@
     <Compile Include="ViewModels\CustomerDetailsViewModel.cs" />
     <Compile Include="ViewModels\CustomersViewModel.cs" />
     <Compile Include="ViewModels\MovieDetailsViewModel.cs" />
+    <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
     <Compile Include="ViewModels\NewCustomerViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
@@ -303,6 +308,7 @@
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -361,14 +367,17 @@
     <EmbeddedResource Include="Migrations\201812101049538_PopulateMovie.resx">
       <DependentUpon>201812101049538_PopulateMovie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812101150138_AddGenre.resx">
-      <DependentUpon>201812101150138_AddGenre.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812111429443_RemoveGenre.resx">
+      <DependentUpon>201812111429443_RemoveGenre.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812101234122_AddGenre1.resx">
-      <DependentUpon>201812101234122_AddGenre1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812111439271_RemoveGenre1.resx">
+      <DependentUpon>201812111439271_RemoveGenre1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812101245325_PopulateGenres.resx">
-      <DependentUpon>201812101245325_PopulateGenres.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812111441189_AddGenre.resx">
+      <DependentUpon>201812111441189_AddGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812111453425_PopulateGenre.resx">
+      <DependentUpon>201812111453425_PopulateGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
