@@ -16,7 +16,7 @@ namespace Vidly.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            AddColumn("dbo.Movies", "GenreId", c => c.Byte(nullable: true));
+            AddColumn("dbo.Movies", "GenreId", c => c.Byte(nullable: false));
             CreateIndex("dbo.Movies", "GenreId");
             AddForeignKey("dbo.Movies", "GenreId", "dbo.Genres", "Id", cascadeDelete: true);
         }

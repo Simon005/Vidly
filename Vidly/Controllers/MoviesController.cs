@@ -51,8 +51,8 @@ namespace Vidly.Controllers
 
             if (String.IsNullOrWhiteSpace(sortBy))
                 sortBy = "Name";
-            //includeGenre
-            var movies = _myDbContext.Movies.ToList();
+
+            var movies = _myDbContext.Movies.Include(m => m.Genre).ToList();
             var model = new MoviesViewModel
             {
                 Movies = movies
@@ -61,17 +61,17 @@ namespace Vidly.Controllers
             return View(model);
         }
 
-        [Route("Movies/Details/{id:regex(\\d{1}):range(1,12)}")]
+        [Route("Movies/Details/{id:regex(\\d{1})}")]
         public ActionResult Details(int id)
         {
 
-            var movie = _myDbContext.Movies.FirstOrDefault(m => m.Id == id);
+            var movie = _myDbContext.Movies.Include(m => m.Genre).FirstOrDefault(m => m.Id == id);
 
             var model = new MovieDetailsViewModel
             {
                 Name = movie.Name,
                 DateAdded = movie.DateAdded,
-                //GenreName = movie.Genre.Name,
+                GenreName = movie.Genre.Name,
                 ReleaseDate = movie.ReleaseDate,
                 InStock = movie.NumberInStock
             };
@@ -89,10 +89,10 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            //var genres = _myDbContext.Genres.ToList();
+            var genres = _myDbContext.Genres.ToList();
             var model = new MovieFormViewModel
             {
-                //Genres = genres
+                Genres = genres
             };
 
             return View("MovieForm", model);
@@ -111,7 +111,7 @@ namespace Vidly.Controllers
                 movieInDb.ReleaseDate = model.Movie.ReleaseDate;
                 movieInDb.DateAdded = model.Movie.DateAdded;
                 movieInDb.NumberInStock = model.Movie.NumberInStock;
-                //movieInDb.GenreId = model.Movie.GenreId;
+                movieInDb.GenreId = model.Movie.GenreId;
 
             }
 

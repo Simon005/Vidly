@@ -7,10 +7,10 @@ namespace Vidly.Migrations
     {
         public override void Up()
         {
-            Sql("INSERT INTO Genre () VALUES ('Action')");
-            Sql("INSERT INTO Genre () VALUES ('Comedy')");
-            Sql("INSERT INTO Genre () VALUES ('Family')");
-            Sql("INSERT INTO Genre () VALUES ('Action')");
+            Sql("INSERT INTO Genres (Id, Name) VALUES (1, 'Action')");
+            Sql("INSERT INTO Genres (Id, Name) VALUES (2, 'Comedy')");
+            Sql("INSERT INTO Genres (Id, Name) VALUES (3, 'Family')");
+            Sql("INSERT INTO Genres (Id, Name) VALUES (4, 'Romance')");
 
 
         }
