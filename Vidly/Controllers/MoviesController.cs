@@ -41,7 +41,21 @@ namespace Vidly.Controllers
 
         public ActionResult Edit(int id)
         {
-            return Content("id " + id);
+            if (id == 0)
+                return HttpNotFound();
+
+
+            var movie = _myDbContext.Movies.Include(m => m.Genre).FirstOrDefault(m => m.Id == id);
+
+            var model = new MovieFormViewModel
+            {
+                 Genres = _myDbContext.Genres,
+                  Movie = movie
+            };
+
+
+            
+            return View("MovieForm", model);
         }
 
         public ActionResult Index(int? pageIndex, string sortBy)

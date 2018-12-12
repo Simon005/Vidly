@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201812111453425_PopulateGenre.Designer.cs">
       <DependentUpon>201812111453425_PopulateGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812120932393_RemoveAnnotationsInMembershipTypes.cs" />
+    <Compile Include="Migrations\201812120932393_RemoveAnnotationsInMembershipTypes.Designer.cs">
+      <DependentUpon>201812120932393_RemoveAnnotationsInMembershipTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\MyDbContext.cs" />
@@ -224,7 +228,7 @@
     <Compile Include="ViewModels\MovieDetailsViewModel.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
     <Compile Include="ViewModels\MoviesViewModel.cs" />
-    <Compile Include="ViewModels\NewCustomerViewModel.cs" />
+    <Compile Include="ViewModels\CustomerFormViewModel.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -378,6 +382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812111453425_PopulateGenre.resx">
       <DependentUpon>201812111453425_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812120932393_RemoveAnnotationsInMembershipTypes.resx">
+      <DependentUpon>201812120932393_RemoveAnnotationsInMembershipTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
