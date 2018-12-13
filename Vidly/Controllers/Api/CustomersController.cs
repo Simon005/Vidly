@@ -75,6 +75,8 @@ namespace Vidly.Controllers.Api
             return customer;
         }
 
+        // DELETE /api/customers/1
+
         [HttpDelete]
         public void DeleteCustomer(int id)
         {
