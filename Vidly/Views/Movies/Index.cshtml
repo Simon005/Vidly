@@ -28,8 +28,39 @@
             </tbody>
         }
     </table>
+
+    <div id="myElement" style="">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Genre</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>sdfdsfsdf</td>
+                    <td>sdfdsfsdf</td>
+                </tr>
+            </tbody>
+    </div>
 }
 else
 {
     <text>No Movies</text>
 }
+
+
+<script>
+
+        $("#myElement").click().animate(
+  {
+    opacity: .3,
+    width: "500px",
+    height: "700px"
+  }, 2000, function() {
+    // optional callback after animation completes
+  }
+);
+
+</script>
