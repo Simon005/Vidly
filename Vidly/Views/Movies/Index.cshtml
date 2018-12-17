@@ -43,6 +43,7 @@
                     <td>sdfdsfsdf</td>
                 </tr>
             </tbody>
+        </table>
     </div>
 }
 else
@@ -53,14 +54,18 @@ else
 
 <script>
 
-        $("#myElement").click().animate(
-  {
-    opacity: .3,
-    width: "500px",
-    height: "700px"
-  }, 2000, function() {
-    // optional callback after animation completes
-  }
-);
+    $("#myElement").on('click', function () {
+
+
+        $("#myElement").animate(
+            {
+                opacity: .3,
+                //width: "500px",
+                //height: "700px"
+            }, 2000, function () {
+                // optional callback after animation completes
+            }
+        )
+    });
 
 </script>
