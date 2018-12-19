@@ -9,47 +9,45 @@
     @Html.ActionLink("NEW MOVIE", "New", "Movies", new { @class = "btn btn-primary " })
 </p>
 
-@if (Model.Movies.Any())
-{
+
+<table class="table table-bordered table-hover" id="movies">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Genre</td>
+            <td>Delete</td>
+
+        </tr>
+    </thead>
+        <tbody>
+    @foreach (var movie in Model.Movies)
+    {
+            @*<tr>
+                <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
+                <td>@movie.Genre.Name</td>
+                <td><button class="btn-link js-delete" data-movie-id="@movie.Id">Delete</button></td>
+            </tr>*@
+    }
+        </tbody>
+</table>
+
+<div id="myElement" style="">
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <td>Name</td>
                 <td>Genre</td>
+                <td>Delete</td>
             </tr>
         </thead>
-        @foreach (var movie in Model.Movies)
-        {
-            <tbody>
-                <tr>
-                    <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
-                    <td>@movie.Genre.Name</td>
-                </tr>
-            </tbody>
-        }
+        <tbody>
+            <tr>
+                <td>sdfdsfsdf</td>
+                <td>sdfdsfsdf</td>
+            </tr>
+        </tbody>
     </table>
-
-    <div id="myElement" style="">
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <td>Name</td>
-                    <td>Genre</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>sdfdsfsdf</td>
-                    <td>sdfdsfsdf</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-}
-else
-{
-    <text>No Movies</text>
-}
+</div>
 
 
 <script>
@@ -66,6 +64,53 @@ else
                 // optional callback after animation completes
             }
         )
+    });
+
+    $(document).ready(function () {
+        var table = $('#movies').DataTable({
+            ajax: {
+                url: "/api/movies",
+                dataSrc: ""
+            },
+            columns: [
+                {
+                    data: "name",
+                    render: function (data, type, movie) {
+                        return "<a href='/movies/edit/" + movie.id + "'>" + movie.name + "</a>";
+                    }
+                },
+
+                {
+                    data: "genre.name"
+                },
+
+                {
+                    data: "id",
+                    render: function (data) {
+                        return "<button class='btn-link js-delete' data-movie-id=" + data + ">Delete</button>"
+                    }
+                }
+            ]
+        });
+
+        $('#movies').on('click', '.js-delete', function () {
+
+            var button = $(this);
+
+            bootbox.confirm("Really delete?", function (result) {
+
+                if (result) {
+                    $.ajax({
+                        url: "/api/movies/" + button.attr('data-movie-id'),
+                        method: "DELETE",
+                        success: function () {
+                            table.row(button.parents('tr')).remove().draw();
+                        }
+
+                    });
+                }
+            });
+        });
     });
 
 </script>
