@@ -81,7 +81,7 @@ namespace Vidly.Controllers.Api
             var movieInDb = _myDbContext.Movies.FirstOrDefault(m => m.Id == id);
 
             if (movieInDb == null)
-                return BadRequest();
+                return NotFound();
 
             var updatedMovie = Mapper.Map(movieDto, movieInDb);
 
@@ -89,7 +89,7 @@ namespace Vidly.Controllers.Api
 
 
 
-            return Created(new Uri(Request.RequestUri + "/" + id), updatedMovie);
+            return Ok(updatedMovie);
         }
 
         //DELETE /api/movies/1
