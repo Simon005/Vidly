@@ -39,6 +39,8 @@ namespace Vidly.Controllers
             return View(viewmodel);
         }
 
+
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             if (id == 0)
