@@ -7,7 +7,7 @@ using System.Data.Entity;
 using System.Net.Http;
 using System.Web.Http;
 using Vidly.Dtos;
-using Vidly.Entity;
+//using Vidly.Entity;
 using Vidly.Models;
 
 namespace Vidly.Controllers.Api
@@ -15,12 +15,12 @@ namespace Vidly.Controllers.Api
     public class MoviesController : ApiController
     {
 
-        private MyDbContext _myDbContext;
+        private ApplicationDbContext _myDbContext;
 
 
         public MoviesController()
         {
-            _myDbContext = new MyDbContext();
+            _myDbContext = new ApplicationDbContext();
         }
 
 

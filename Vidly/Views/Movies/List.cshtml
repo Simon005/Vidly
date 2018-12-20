@@ -20,14 +20,14 @@
         </tr>
     </thead>
         <tbody>
-    @foreach (var movie in Model.Movies)
+    @*@foreach (var movie in Model.Movies)
     {
-            @*<tr>
+            <tr>
                 <td>@Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)</td>
                 <td>@movie.Genre.Name</td>
                 <td><button class="btn-link js-delete" data-movie-id="@movie.Id">Delete</button></td>
-            </tr>*@
-    }
+            </tr>
+    }*@
         </tbody>
 </table>
 

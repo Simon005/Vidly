@@ -7,18 +7,18 @@ using System.Data.Entity;
 using System.Net.Http;
 using System.Web.Http;
 using Vidly.Dtos;
-using Vidly.Entity;
+//using Vidly.Entity;
 using Vidly.Models;
 
 namespace Vidly.Controllers.Api
 {
     public class CustomersController : ApiController
     {
-        private MyDbContext _context;
+        private ApplicationDbContext _context;
 
         public CustomersController()
         {
-            _context = new MyDbContext();
+            _context = new ApplicationDbContext();
         }
 
 

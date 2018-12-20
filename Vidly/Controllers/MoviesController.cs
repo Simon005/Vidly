@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
-using Vidly.Entity;
+//using Vidly.Entity;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -12,11 +12,11 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
-        public MyDbContext _myDbContext;
+        public ApplicationDbContext _myDbContext;
 
         public MoviesController()
         {
-            _myDbContext = new MyDbContext();
+            _myDbContext = new ApplicationDbContext();
         }
 
         // GET: Movies/random
@@ -58,21 +58,24 @@ namespace Vidly.Controllers
             return View("MovieForm", model);
         }
 
-        public ActionResult Index(int? pageIndex, string sortBy)
+        public ActionResult Index()
         {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
+            //int? pageIndex, string sortBy
+            //if (!pageIndex.HasValue)
+            //    pageIndex = 1;
 
-            if (String.IsNullOrWhiteSpace(sortBy))
-                sortBy = "Name";
+            //if (String.IsNullOrWhiteSpace(sortBy))
+            //    sortBy = "Name";
 
-            var movies = _myDbContext.Movies.Include(m => m.Genre).ToList();
-            var model = new MoviesViewModel
-            {
-                Movies = movies
-            };
+            //var movies = _myDbContext.Movies.Include(m => m.Genre).ToList();
+            //var model = new MoviesViewModel
+            //{
+            //    Movies = movies
+            //};
+            if (User.IsInRole(RoleName.CanManageMovies))
+            return View("List");
 
-            return View(model);
+            return View("ReadOnlyList");
         }
 
         [Route("Movies/Details/{id:regex(\\d{1})}")]
@@ -101,6 +104,7 @@ namespace Vidly.Controllers
             return Content(year + "/" + month);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult New()
         {
             var genres = _myDbContext.Genres.ToList();
