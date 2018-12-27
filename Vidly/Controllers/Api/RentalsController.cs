@@ -40,20 +40,16 @@ namespace Vidly.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
+
             var customer = _context.Customers.FirstOrDefault(c => c.Id == newRental.CustomerId);
 
-            if (customer == null)
-                return BadRequest("CustomerId is not valid.");
-
-            if (newRental.MovieIds.Count == 0)
-            {
-                return BadRequest("No Movie Ids have been given.");
-            }
-
-            var movies = _context.Movies.Where(m => newRental.MovieIds.Contains(m.Id));
+            var movies = _context.Movies.Where(m => newRental.MovieIds.Contains(m.Id)).ToList();
 
             foreach (var movie in movies)
             {
+                if (movie.NumberAvailable == 0)
+                    return BadRequest("Movie is not available");
+
                 movie.NumberAvailable--;
 
                 var rental = new Rental
