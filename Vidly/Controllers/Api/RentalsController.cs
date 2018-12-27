@@ -1,19 +1,20 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using Vidly.Dtos;
 using Vidly.Models;
 
 namespace Vidly.Controllers.Api
 {
-    public class RentalController : ApiController
+    public class RentalsController : ApiController
     {
 
         private ApplicationDbContext _context;
-        public RentalController()
+        public RentalsController()
         {
             _context = new ApplicationDbContext();
         }
@@ -21,7 +22,9 @@ namespace Vidly.Controllers.Api
         // GET: /api/Rentals
         public IHttpActionResult GetRentals()
         {
-            return Ok();
+            var rentals = _context.Rentals.Include(r => r.Customer).Include(r => r.Movie).AsEnumerable();
+
+            return Ok(rentals);
         }
 
         //GET /api/rentals/1
@@ -37,7 +40,7 @@ namespace Vidly.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var customer = _context.Customers.FirstOrDefault(c => c.Id == newRental.customerId);
+            var customer = _context.Customers.FirstOrDefault(c => c.Id == newRental.CustomerId);
 
             if (customer == null)
                 return BadRequest("CustomerId is not valid.");
@@ -64,7 +67,7 @@ namespace Vidly.Controllers.Api
 
             _context.SaveChanges();
 
-            return Ok();
+            return Created(new Uri(Request.RequestUri + "/"), newRental);
         }
 
         //PUT /api/rentals/1

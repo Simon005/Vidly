@@ -62,6 +62,7 @@ namespace Vidly.Controllers.Api
 
             var movie = Mapper.Map<MovieDto, Movie>(movieDto);
 
+            movie.NumberAvailable = movieDto.NumberInStock;
             _myDbContext.Movies.Add(movie);
             _myDbContext.SaveChanges();
 
